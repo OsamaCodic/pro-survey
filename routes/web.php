@@ -20,7 +20,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::resource('/testing',TestController::class);
 
-Route::resource('/survey',SurveyController::class);
-Route::resource('/home',HomeController::class);
+Auth::routes();
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+   
+    Route::resource('/survey',SurveyController::class);
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+});
+

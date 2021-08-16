@@ -12,9 +12,10 @@ class SurveyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
-        return view('master-layout.index');
+        return view('survey.index');
     }
 
     /**
