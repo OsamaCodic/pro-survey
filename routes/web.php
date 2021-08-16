@@ -1,6 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\admin\SurveyController;
+use App\Http\Controllers\admin\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route::resource('/testing',TestController::class);
+
+Route::resource('/survey',SurveyController::class);
+Route::resource('/home',HomeController::class);
