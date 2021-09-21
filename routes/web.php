@@ -20,13 +20,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Auth::routes();
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
-   
-    Route::resource('/survey',SurveyController::class);
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => 'auth'], function () {
+    //Routes for Logged user
+
+    Route::get('/home', [App\Http\Controllers\HomeController ::class, 'index'])->name('home');
+    
+    Route::name('admin')->group(function () {
+        
+        Route::resource('/survey',SurveyController::class);
+        
+    });
+
+
 
 });
 

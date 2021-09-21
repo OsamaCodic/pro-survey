@@ -1,9 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.master')
+@section('title')
+    Dashboard
+@endsection
+{{-- @extends('layouts.app') --}}
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
@@ -15,6 +19,27 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+
+                    <h3 class="mt-3"><strong>Modules</strong></h3>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <a href="{{url('/survey')}}" type="button" class="btn btn-primary btn-block">Surveys</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="#" type="button" class="btn btn-primary btn-block">History</a>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <a href="#" type="button" class="btn btn-primary btn-block">Questions</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="#" type="button" class="btn btn-primary btn-block">Settings</a>
+                        </div>
+                    </div>
+
+                    
                 </div>
             </div>
         </div>
