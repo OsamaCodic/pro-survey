@@ -28,7 +28,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/home', [App\Http\Controllers\HomeController ::class, 'index'])->name('home');
     
-    Route::name('admin')->group(function () {
+    Route::group(['prefix' => 'admin'], function ()
+    {
         
         Route::resource('/survey',SurveyController::class);
         

@@ -15,7 +15,7 @@ class SurveyController extends Controller
     
     public function index()
     {
-        return view('survey.index');
+        return view('admin.survey.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class SurveyController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.survey.create');
     }
 
     /**
@@ -36,7 +36,7 @@ class SurveyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

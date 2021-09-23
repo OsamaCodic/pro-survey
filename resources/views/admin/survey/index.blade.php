@@ -8,29 +8,29 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <div class="card">
+
+                <a href="{{url('admin/survey/create')}}" type="button" class="btn btn-info btn-sm">Create Survey <i class="fa fa-plus" aria-hidden="true"></i></a>
+                
+                <div class="card card-info mt-3">
                     <div class="card-header">
-                        <h3 class="card-title">Table Name</h3>
+                        <h3 class="card-title">Surveys</h3>
                     </div>
                     <!-- card-body -->
+
                     <div class="card-body">
-                        <table id="example2" class="table table-bordered table-hover">
+                        <table id="example2" class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Rendering engine</th>
-                                <th>Browser</th>
-                                <th>Platform(s)</th>
-                                <th>Engine version</th>
-                                <th>CSS grade</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                             <tbody>
                                 <tr>
                                     <td>Trident</td>
                                     <td>Internet Explorer 4.0</td>
-                                    <td>Win 95+</td>
-                                    <td> 4</td>
-                                    <td>X</td>
+                                    <td>n/a</td>
                                 </tr>
                             </tbody>
                         </table>
