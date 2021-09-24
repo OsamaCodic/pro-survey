@@ -1,57 +1,29 @@
-
-<form id="site_visit_form" action="{{ $site_visit_form_action }}" method="{{ $site_visit_form_method }}"
-    class="mt_form" enctype="multipart/form-data">
-
+<form id="surveyForm" action="{{$form_action}}" method="{{$form_method}}">
     @csrf
+    <div class="card-body">
+        <div class="form-group row">
+            <label for="title" class="col-sm-2 col-form-label">Title</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="title" name="title" value="{{@$survey->title}}" placeholder="Enter title..">
+            </div>
+        </div>
 
-    <div class="form-group row">
-        <label for="" class="col-sm-2 col-form-label">Name of Applicant</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="" name="" value="{{ @$development_application->full_name }}"
-                readonly placeholder="">
+        <div class="form-group row">
+            <label for="description" class="col-sm-2 col-form-label">Description</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" id="description" name="description" placeholder="Enter description.." rows="4" cols="50">{{@$survey->description}}</textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="display_order" class="col-sm-2 col-form-label">Display Order</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" id="display_order" name="display_order" value="{{@$survey->display_order}}" placeholder="Enter display order..">
+            </div>
         </div>
     </div>
 
-    <button type="button" data-dismiss="alert" aria-hidden="true" class="close">&times;</button>
-
-    <div id="validation_errors_site_visit"></div>
-
+    <div class="card-footer">
+        <button type="submit" class="btn {{$form_btn_class}} btn-sm">{{$form_btn}} <i class="fa fa-plus" aria-hidden="true"></i></button>
+        <a href="{{ url('admin/survey') }}" type="submit" class="btn btn-default btn-sm ml-2">Back <i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+    </div>
 </form>
-
-
-<script>
-    $(document).ready(function() {
-        $('#surveyForm').on('submit', function(e) {
-            e.preventDefault();
-            $('.btn').attr('disabled', true);
-            // $('#validation_errors_site_visit').html("Please wait...")
-            $form = $(this);
-
-            $.ajax({
-                    url: $(this).attr('action'),
-                    type: $(this).attr('method'),
-                    data: $form.serialize(),
-                })
-                .done(function() {
-                    alert("form submit sucessfully!")
-                })
-                .fail(function(errors) {
-                    $('.btn').attr('disabled', false);
-                    console.log(errors);
-                    // $('#validation_errors_site_visit').html("<ul>");
-                    $('#validation_errors_site_visit').addClass('alert alert-danger');
-
-                    $.each(errors.responseJSON.errors, function(indexInArray, value) {
-                        console.log(value);
-                        $("#validation_errors_site_visit").append("<li>" + value + "</li>")
-                    });
-
-                    $('#validation_errors_site_visit').append("</ul>");
-
-                })
-                .always(function() {
-                    $('.btn').attr('disabled', false);
-                });
-        });
-    });
-</script>

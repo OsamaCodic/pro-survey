@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Survey;
 
 class SurveyController extends Controller
 {
@@ -15,7 +16,9 @@ class SurveyController extends Controller
     
     public function index()
     {
-        return view('admin.survey.index');
+        $surveys = Survey::orderBy('display_order', 'ASC')->get();
+
+        return view('admin.survey.index', compact('surveys'));
     }
 
     /**
@@ -25,7 +28,12 @@ class SurveyController extends Controller
      */
     public function create()
     {
-        return view('admin.survey.create');
+        $form_action=url('admin/survey');
+        $form_method="POST";
+        $form_btn = 'Create';
+        $form_btn_class = 'btn-success';
+
+        return view('admin.survey.create', compact('form_action', 'form_method', 'form_btn', 'form_btn_class'));
     }
 
     /**
@@ -36,7 +44,11 @@ class SurveyController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        Survey::create($request->except('_token'));
+        
+        return response([
+            'redirect_url' => url('admin/survey')
+        ],200);
     }
 
     /**
@@ -58,7 +70,17 @@ class SurveyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $survey = Survey::find($id);
+
+        if ($survey)
+        {
+            $form_action=url('admin/survey/'.$id);
+            $form_method="PUT";
+            $form_btn = 'Update';
+            $form_btn_class = 'btn-warning';
+        }
+
+        return view('admin.survey.create', compact('form_action', 'form_method', 'survey','form_btn', 'form_btn_class'));
     }
 
     /**
@@ -70,7 +92,12 @@ class SurveyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $survey = Survey::find($id);
+        $survey->update($request->except('_token'));
+        return response([
+            'redirect_url' => url('admin/survey')
+        ],200);
+    
     }
 
     /**
@@ -81,6 +108,9 @@ class SurveyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Survey::find($id)->delete();
+        return response([
+            'redirect_url' => url('admin/survey')
+        ],200);
     }
 }

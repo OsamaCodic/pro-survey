@@ -4,6 +4,15 @@
     Survey
 @endsection
 
+<style>
+    .zoom {
+		transition: transform .2s;
+	}
+	.zoom:hover {
+		transform: scale(1.5);
+	}
+</style>
+
 @section('content')   
     <div class="container-fluid">
         <div class="row">
@@ -23,21 +32,43 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Description</th>
+                                <th>Display Order</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                             <tbody>
-                                <tr>
-                                    <td>Trident</td>
-                                    <td>Internet Explorer 4.0</td>
-                                    <td>n/a</td>
-                                </tr>
+                                    @foreach ($surveys as $survey)
+                                        <tr>
+                                            <td>{{$survey->title}}</td>
+                                            <td>{{$survey->description}}</td>
+                                            <td>{{$survey->display_order}}</td>
+                                            <td>
+                                                <a href="{{ url('admin/survey/'.$survey->id.'/edit') }}"><i style="color: #e7b00a" class="zoom fa fa-pencil pull-right fa-xs" aria-hidden="true"></i></a>
+                                                <a href="#" onclick="delete_survey({{$survey->id}})" class="delete" data-id="" type="button" class="pull-right btn btn-xs btn-danger"><i style="color: #dc3545" class="zoom fa fa-trash pull-right fa-xs" aria-hidden="true"></i></butt>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                             </tbody>
                         </table>
+                        @if ($surveys->count()==0)
+                            <p class="text-center text-danger mt-3">No survey has been found!</p>
+                        @endif
                     </div>
                     <!-- /card-body -->
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+            
+            
+        
+    </script>
+@endsection
+
+
+
+@section('javascript')
+    @include('admin.survey.partials.js')
 @endsection

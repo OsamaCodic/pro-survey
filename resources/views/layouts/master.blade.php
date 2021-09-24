@@ -5,8 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>@yield('title')</title>
 
-        <!-- Google Font: Source Sans Pro -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
         <!-- Font Awesome -->
         <link rel="stylesheet" href="{{asset('AdminLTE')}}/plugins/fontawesome-free/css/all.min.css">
         <!-- Ionicons -->
@@ -29,11 +27,10 @@
         {{-- jQuery CDN --}}
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     
-        <script src="http://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous">
-</script>
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
+        fontawesome
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     </head>
 
     {{-- ///////////////////////////////////////////////////////////////////////// --}}
@@ -279,12 +276,6 @@
                 </section>
                 <!-- /.content -->
             </div>
-            <!-- /.content-wrapper -->
-
-        
-            {{-- ///////////////////////////////////////////////////////////////////////// --}}
-
-
             <footer class="main-footer">
                 <strong>BSIT (Self) &copy; 2018-2022 <a href="#">ProSurvey</a>.</strong>
                     University Of Sargodha
@@ -336,6 +327,8 @@
             <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
             <script src="{{asset('AdminLTE')}}/dist/js/pages/dashboard.js"></script>
         </div>
+
+        @yield('javascript')
     </body>
 </html>
     
