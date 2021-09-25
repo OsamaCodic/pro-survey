@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-12">
 
-                <a href="{{url('admin/survey/create')}}" type="button" class="btn btn-info btn-sm">Create Survey <i class="fa fa-plus" aria-hidden="true"></i></a>
+                <a href="{{url('admin/survey/create')}}" type="button" class="btn btn-info btn-sm">Create Survey <i class="fa fa-plus fa-xs" aria-hidden="true"></i></a>
                 
                 <div class="card card-info mt-3">
                     <div class="card-header">

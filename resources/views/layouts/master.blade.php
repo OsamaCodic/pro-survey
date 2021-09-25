@@ -23,18 +23,41 @@
         <link rel="stylesheet" href="{{asset('AdminLTE')}}/plugins/daterangepicker/daterangepicker.css">
         <!-- summernote -->
         <link rel="stylesheet" href="{{asset('AdminLTE')}}/plugins/summernote/summernote-bs4.min.css">
-
-        {{-- jQuery CDN --}}
-        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    
-        <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
-        fontawesome
+        
+        {{-- fontawesome --}}
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        
+        {{-- jQuery Validation Plugin CDN--}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+        
+        <style>
+            .required:after{ 
+                content:'*'; 
+                color:red; 
+                padding-left:5px;
+            }
+
+            .error{
+                color: red;
+            }
+            label.error.fail-alert {
+                font-weight: 500;
+                border-radius: 4px;
+                line-height: 1;
+                padding: 2px 0 6px 6px;
+            }
+            input.valid.success-alert {
+                border: 1px solid #4CAF50;
+                color: green;
+            }
+            input.error.fail-alert {
+                border: 1px solid red;
+                color: red;
+            }
+        </style>
+        
     </head>
-
-    {{-- ///////////////////////////////////////////////////////////////////////// --}}
-
     <body class="hold-transition sidebar-mini layout-fixed">
         <div class="wrapper">
 
@@ -293,9 +316,9 @@
             <!-- ./wrapper -->
         
             <!-- jQuery -->
-            <script src="{{asset('AdminLTE')}}/plugins/jquery/jquery.min.js"></script>
+            {{-- <script src="{{asset('AdminLTE')}}/plugins/jquery/jquery.min.js"></script> --}}
             <!-- jQuery UI 1.11.4 -->
-            <script src="{{asset('AdminLTE')}}/plugins/jquery-ui/jquery-ui.min.js"></script>
+            {{-- <script src="{{asset('AdminLTE')}}/plugins/jquery-ui/jquery-ui.min.js"></script> --}}
             <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
             <script>
             $.widget.bridge('uibutton', $.ui.button)

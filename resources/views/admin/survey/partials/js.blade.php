@@ -1,40 +1,37 @@
 <script>
-    $(document).ready(function ()
-    {
-        // Survey Create/Update
-        $('#surveyForm').on('submit', function (e) {
-            e.preventDefault();
-            $('.btn').attr('disabled', true);
-            // $('#validation_errors_site_visit').html("Please wait...")
-            $form = $(this);
+    
+    // Survey Create/Update
+    $("#surveyForm").validate({
+        errorClass: "error fail-alert",
+        validClass: "valid success-alert",
 
+        rules: {
+            title: {
+                required: true,
+                maxlength: 10,
+            },
+            display_order: {
+                required: true,
+                number: true,
+            }
+        },
+        messages: {
+            title: {
+                required: "Please enter survey title",
+            }
+        },
+
+        submitHandler: function(form) {
             $.ajax({
-                url : $(this).attr('action'),
-                type: $(this).attr('method'),
-                data: $form.serialize(),
-            })
-            .done(function(response) {
-                location.href = response.redirect_url;
-            })
-            .fail(function(errors) {
-                $('.btn').attr('disabled', false);
-                console.log(errors);
-                // $('#validation_errors_site_visit').html("<ul>");
-                $('#validation_errors_site_visit').addClass('alert alert-danger');
-                
-                $.each(errors.responseJSON.errors, function (indexInArray, value) {
-                    console.log(value); 
-                    $("#validation_errors_site_visit").append("<li>"+value+"</li>")
-                });
-
-                $('#validation_errors_site_visit').append("</ul>");
-
-            })
-            .always(function() {
-                $('.btn').attr('disabled', false);
+                url: form.action,
+                type: form.method,
+                data: $(form).serialize(),
+                success: function(response){
+                    location.href = response.redirect_url;
+                }          
             });
-        });
-        // Survey Create/Update
+        }
+
     });
 
     // Survey Delete	

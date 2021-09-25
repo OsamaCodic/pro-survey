@@ -31,9 +31,10 @@ class SurveyController extends Controller
         $form_action=url('admin/survey');
         $form_method="POST";
         $form_btn = 'Create';
+        $form_btn_icon = 'fa fa-plus';
         $form_btn_class = 'btn-success';
 
-        return view('admin.survey.create', compact('form_action', 'form_method', 'form_btn', 'form_btn_class'));
+        return view('admin.survey.create', compact('form_action', 'form_method', 'form_btn', 'form_btn_class', 'form_btn_icon'));
     }
 
     /**
@@ -77,10 +78,11 @@ class SurveyController extends Controller
             $form_action=url('admin/survey/'.$id);
             $form_method="PUT";
             $form_btn = 'Update';
+            $form_btn_icon = 'fa fa-repeat';
             $form_btn_class = 'btn-warning';
         }
 
-        return view('admin.survey.create', compact('form_action', 'form_method', 'survey','form_btn', 'form_btn_class'));
+        return view('admin.survey.create', compact('form_action', 'form_method', 'survey','form_btn', 'form_btn_class', 'form_btn_icon'));
     }
 
     /**
