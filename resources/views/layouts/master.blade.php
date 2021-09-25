@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
         <title>@yield('title')</title>
 
         <!-- Font Awesome -->
@@ -31,6 +33,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
         
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js" integrity="sha512-zlWWyZq71UMApAjih4WkaRpikgY9Bz1oXIW5G0fED4vk14JjGlQ1UmkGM392jEULP8jbNMiwLWdM8Z87Hu88Fw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        
+        {{-- this is for Delete Swal Function --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
         <style>
             .required:after{ 
                 content:'*'; 
@@ -351,6 +357,8 @@
             <script src="{{asset('AdminLTE')}}/dist/js/pages/dashboard.js"></script>
         </div>
 
+        @include('sweetalert::alert')
+        
         @yield('javascript')
     </body>
 </html>

@@ -24,9 +24,9 @@
                     <div class="card-header">
                         <h3 class="card-title">Surveys</h3>
                     </div>
-                    <!-- card-body -->
 
                     <div class="card-body">
+
                         <table id="example2" class="table table-hover">
                         <thead>
                             <tr>
@@ -44,7 +44,7 @@
                                             <td>{{$survey->display_order}}</td>
                                             <td>
                                                 <a href="{{ url('admin/survey/'.$survey->id.'/edit') }}"><i style="color: #e7b00a" class="zoom fa fa-pencil pull-right fa-xs" aria-hidden="true"></i></a>
-                                                <a href="#" onclick="delete_survey({{$survey->id}})" class="delete" data-id="" type="button" class="pull-right btn btn-xs btn-danger"><i style="color: #dc3545" class="zoom fa fa-trash pull-right fa-xs" aria-hidden="true"></i></butt>
+                                                <a href="#" onclick="delete_survey({{$survey}})" class="delete" type="button" class="pull-right btn btn-xs btn-danger"><i style="color: #dc3545" class="zoom fa fa-trash pull-right fa-xs" aria-hidden="true"></i></a> 
                                             </td>
                                         </tr>
                                     @endforeach
@@ -60,14 +60,7 @@
         </div>
     </div>
 
-    <script>
-            
-            
-        
-    </script>
 @endsection
-
-
 
 @section('javascript')
     @include('admin.survey.partials.js')

@@ -1,5 +1,11 @@
 <script>
     
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     // Survey Create/Update
     $("#surveyForm").validate({
         errorClass: "error fail-alert",
@@ -8,7 +14,7 @@
         rules: {
             title: {
                 required: true,
-                maxlength: 10,
+                maxlength: 35,
             },
             display_order: {
                 required: true,
@@ -17,41 +23,55 @@
         },
         messages: {
             title: {
-                required: "Please enter survey title",
+                required: "Please enter survey title!",
+            },
+            display_order: {
+                required: "Please enter display order",
             }
         },
 
         submitHandler: function(form) {
             $.ajax({
-                url: form.action,
-                type: form.method,
-                data: $(form).serialize(),
+                url : $('#surveyForm').attr('action'),
+                type: $('#surveyForm').attr('method'),
+                data: $('#surveyForm').serialize(),
                 success: function(response){
                     location.href = response.redirect_url;
                 }          
             });
         }
-
     });
 
     // Survey Delete	
-    function delete_survey(id)
-    {
-        if (!confirm('Are you sure you want to delete this server?')) return false;
+    function delete_survey(obj)
+    { 
         var url = "{{ url('admin/survey') }}";
-        var dltUrl = url+"/"+id;
-        $.ajax({
-            url: dltUrl,
-            type: "DELETE",
-            data:{
-                _token:'{{ csrf_token() }}',
-                id:'id'
-            }           
-        })
-        .done(function(response) {
-            window.location.href = response.redirect_url
-        })
+        var dltUrl = url+"/"+obj.id;
+
+        swal({
+                title: "Are you sure you want to delete " + obj.title +"?",
+                text: "If you delete this, it will be delete permanently!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    url: dltUrl,
+                    type: "DELETE",
+                    data:{
+                        _token:'{{ csrf_token() }}',
+                        id:'id'
+                    }           
+                })
+                .done(function(response) {
+                    location.reload();
+                })
+            }
+        });        
     }
     // Survey Delete
-    
+
 </script>
+

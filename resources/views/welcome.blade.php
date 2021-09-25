@@ -53,7 +53,7 @@
 
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
+                                    Create surveys online in minutes. Transform feedback into growth for your business. Create simple to sophisticated surveys online. Measure & act on feedback.Be the person with great ideas. Surveys give you actionable insights and fresh perspectives.
                                 </div>
                             </div>
                         </div>

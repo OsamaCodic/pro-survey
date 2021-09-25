@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Survey;
+use Session;
 
 class SurveyController extends Controller
 {
@@ -47,6 +48,7 @@ class SurveyController extends Controller
     {
         Survey::create($request->except('_token'));
         
+        Session::flash('success', 'Survey created successfully!');
         return response([
             'redirect_url' => url('admin/survey')
         ],200);
@@ -96,6 +98,8 @@ class SurveyController extends Controller
     {
         $survey = Survey::find($id);
         $survey->update($request->except('_token'));
+
+        Session::flash('success', 'Survey updated successfully!');
         return response([
             'redirect_url' => url('admin/survey')
         ],200);
@@ -111,8 +115,6 @@ class SurveyController extends Controller
     public function destroy($id)
     {
         Survey::find($id)->delete();
-        return response([
-            'redirect_url' => url('admin/survey')
-        ],200);
+        Session::flash('toast_success', 'Survey deleted successfully!');
     }
 }

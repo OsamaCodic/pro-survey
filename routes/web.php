@@ -5,6 +5,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\admin\SurveyController;
 use App\Http\Controllers\admin\HomeController;
 
+use RealRashid\SweetAlert\Facades\Alert;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +27,7 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     //Routes for Logged user
 
+    
     Route::get('/home', [App\Http\Controllers\HomeController ::class, 'index'])->name('home');
     
     Route::group(['prefix' => 'admin'], function ()
