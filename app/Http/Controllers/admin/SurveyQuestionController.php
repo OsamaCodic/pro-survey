@@ -4,22 +4,19 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Survey;
+use App\Models\SurveyQuestion;
 use Session;
 
-class SurveyController extends Controller
+class SurveyQuestionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    
     public function index()
     {
-        $surveys = Survey::orderBy('display_order', 'ASC')->get();
-
-        return view('admin.survey.index', compact('surveys'));
+        return "hi";
     }
 
     /**
@@ -29,13 +26,19 @@ class SurveyController extends Controller
      */
     public function create()
     {
-        $form_action=url('admin/survey');
+        $form_action= url('admin/survey_questions');
         $form_method="POST";
-        $form_btn = 'Create';
+        $form_btn = 'Add';
         $form_btn_icon = 'fa fa-plus';
         $form_btn_class = 'btn-success';
 
-        return view('admin.survey.create', compact('form_action', 'form_method', 'form_btn', 'form_btn_class', 'form_btn_icon'));
+        return view('admin.questions.create',compact(
+            'form_action',
+            'form_method',
+            'form_btn',
+            'form_btn_icon',
+            'form_btn_class',
+        ));
     }
 
     /**
@@ -46,11 +49,10 @@ class SurveyController extends Controller
      */
     public function store(Request $request)
     {
-        $survey = Survey::create($request->except('_token'));
-        
-        Session::flash('toast_success', 'Survey created successfully! Please add questions for this survey');
+        SurveyQuestion::create($request->except('_token'));
+        Session::flash('success', 'Question added successfully!');
         return response([
-            'redirect_url' => url('admin/survey_questions/create?survey_id='.$survey->id)
+            'redirect_url' => url('admin/survey')
         ],200);
     }
 
@@ -73,18 +75,7 @@ class SurveyController extends Controller
      */
     public function edit($id)
     {
-        $survey = Survey::find($id);
-
-        if ($survey)
-        {
-            $form_action=url('admin/survey/'.$id);
-            $form_method="PUT";
-            $form_btn = 'Update';
-            $form_btn_icon = 'fa fa-repeat';
-            $form_btn_class = 'btn-warning';
-        }
-
-        return view('admin.survey.create', compact('form_action', 'form_method', 'survey','form_btn', 'form_btn_class', 'form_btn_icon'));
+        //
     }
 
     /**
@@ -96,14 +87,7 @@ class SurveyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $survey = Survey::find($id);
-        $survey->update($request->except('_token'));
-
-        Session::flash('success', 'Survey updated successfully!');
-        return response([
-            'redirect_url' => url('admin/survey')
-        ],200);
-    
+        //
     }
 
     /**
@@ -114,7 +98,6 @@ class SurveyController extends Controller
      */
     public function destroy($id)
     {
-        Survey::find($id)->delete();
-        Session::flash('toast_success', 'Survey deleted successfully!');
+        //
     }
 }

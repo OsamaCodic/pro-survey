@@ -37,31 +37,8 @@
         
         {{-- this is for Delete Swal Function --}}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-        <style>
-            .required:after{ 
-                content:'*'; 
-                color:red; 
-                padding-left:5px;
-            }
-
-            .error{
-                color: red;
-            }
-            label.error.fail-alert {
-                font-weight: 500;
-                border-radius: 4px;
-                line-height: 1;
-                padding: 2px 0 6px 6px;
-            }
-            input.valid.success-alert {
-                border: 1px solid #4CAF50;
-                color: green;
-            }
-            input.error.fail-alert {
-                border: 1px solid red;
-                color: red;
-            }
-        </style>
+        
+        @include('layouts.css')
         
     </head>
     <body class="hold-transition sidebar-mini layout-fixed">
@@ -173,8 +150,35 @@
                         <!-- Sidebar Menu -->
                         <nav class="mt-2">
                             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                               
+                                <li class="nav-item">
+                                    <a href="{{url('/home')}}" class="nav-link">
+                                        <i class="fa fa-home" aria-hidden="true"></i> 
+                                      <p>
+                                        Dashboard
+                                      </p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{url('admin/survey')}}" class="nav-link">
+                                        <i class="fa fa-address-book" aria-hidden="true"></i> 
+                                      <p>
+                                        Surveys
+                                      </p>
+                                    </a>
+                                </li>
                                 
                                 <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fa fa-cog" aria-hidden="true"></i>
+                                      <p>
+                                        Site Settings
+                                      </p>
+                                    </a>
+                                </li>
+
+                                {{-- <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="nav-icon fas fa-chart-pie"></i>
                                         <p>
@@ -208,16 +212,16 @@
                                             </a>
                                         </li>
                                     </ul>
-                                </li>
+                                </li> --}}
                                 
-                                <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-edit"></i>
-                                    <p>
-                                        Forms
-                                        <i class="fas fa-angle-left right"></i>
-                                    </p>
-                                </a>
+                                {{-- <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="nav-icon fas fa-edit"></i>
+                                        <p>
+                                            Forms
+                                            <i class="fas fa-angle-left right"></i>
+                                        </p>
+                                    </a>
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
                                             <a href="pages/forms/general.html" class="nav-link">
@@ -244,8 +248,8 @@
                                             </a>
                                         </li>
                                     </ul>
-                                </li>
-                                <li class="nav-item">
+                                </li> --}}
+                                {{-- <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="nav-icon fas fa-table"></i>
                                         <p>
@@ -273,7 +277,7 @@
                                             </a>
                                         </li>
                                     </ul>
-                                </li>
+                                </li> --}}
                                 
                             </ul>   
                         </nav>
