@@ -23,19 +23,19 @@
                     <h3 class="mt-3"><strong>Modules</strong></h3>
                     <div class="row mt-3">
                         <div class="col-md-6">
-                            <a href="{{url('admin/survey')}}" type="button" class="btn btn-primary btn-block">Surveys</a>
+                            <a href="{{url('admin/survey')}}" type="button" class="btn btn-secondary btn-block">Surveys</a>
                         </div>
                         <div class="col-md-6">
-                            <a href="#" type="button" class="btn btn-primary btn-block">History</a>
+                            <a href="#" type="button" class="btn btn-secondary btn-block">History</a>
                         </div>
                     </div>
 
                     <div class="row mt-3">
                         <div class="col-md-6">
-                            <a href="#" type="button" class="btn btn-primary btn-block">Questions</a>
+                            <a href="#" type="button" class="btn btn-secondary btn-block">Questions</a>
                         </div>
                         <div class="col-md-6">
-                            <a href="#" type="button" class="btn btn-primary btn-block">Settings</a>
+                            <a href="#" type="button" class="btn btn-secondary btn-block">Settings</a>
                         </div>
                     </div>
 
