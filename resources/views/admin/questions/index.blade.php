@@ -1,28 +1,19 @@
 @extends('layouts.master')
 
 @section('title')
-    Survey
+    Survey - Questions
 @endsection
-
-<style>
-    .zoom {
-		transition: transform .2s;
-	}
-	.zoom:hover {
-		transform: scale(1.5);
-	}
-</style>
 
 @section('content')   
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
 
-                {{-- <a href="{{url('admin/survey/create')}}" type="button" class="btn btn-info btn-sm">Create Survey <i class="fa fa-plus fa-xs" aria-hidden="true"></i></a> --}}
+                <a href="{{url('admin/survey_questions/create?survey_id='.$survey->id)}}" type="button" class="btn btn-info btn-sm">Add more question <i class="fa fa-plus fa-xs" aria-hidden="true"></i></a>
                 
                 <div class="card card-info mt-3">
                     <div class="card-header">
-                        <h3 class="card-title">Questions of (Survey Name)</h3>
+                        <h3 class="card-title">{{$survey->title}} - Questions</h3>
                     </div>
 
                     <div class="card-body">
@@ -32,22 +23,24 @@
                             <tr>
                                 <th>Question Type</th>
                                 <th>Title</th>
+                                {{-- <th>Description</th> --}}
                                 <th>Display Order</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                             <tbody>
-                                    {{-- @foreach ($surveys as $survey)
+                                    @foreach ($survey->surveyQuestions as $surveyQuestion)
                                         <tr>
-                                            <td>{{$survey->title}}</td>
-                                            <td>{{$survey->description}}</td>
-                                            <td>{{$survey->display_order}}</td>
+                                            <td>{{$surveyQuestion->question_type}}</td>
+                                            <td>{{$surveyQuestion->title}}</td>
+                                            {{-- <td>{{$surveyQuestion->description}}</td> --}}
+                                            <td>{{$surveyQuestion->display_order}}</td>
                                             <td>
-                                                <a href="{{ url('admin/survey/'.$survey->id.'/edit') }}"><i style="color: #e7b00a" class="zoom fa fa-pencil pull-right fa-xs" aria-hidden="true"></i></a>
-                                                <a href="#" onclick="delete_survey({{$survey}})" class="delete" type="button" class="pull-right btn btn-xs btn-danger"><i style="color: #dc3545" class="zoom fa fa-trash pull-right fa-xs" aria-hidden="true"></i></a> 
+                                                <a href="{{ url('admin/survey_questions/'.$surveyQuestion->id.'/edit?survey_id='.$survey->id) }}"><i style="color: #e7b00a" class="zoom fa fa-pencil pull-right fa-xs" aria-hidden="true"></i></a>
+                                                {{-- <a href="#" onclick="delete_survey({{$survey}})" class="delete" type="button" class="pull-right btn btn-xs btn-danger"><i style="color: #dc3545" class="zoom fa fa-trash pull-right fa-xs" aria-hidden="true"></i></a>  --}}
                                             </td>
                                         </tr>
-                                    @endforeach --}}
+                                    @endforeach
                             </tbody>
                         </table>
                         {{-- @if ($surveys->count()==0)

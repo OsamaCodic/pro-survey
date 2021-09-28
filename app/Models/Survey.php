@@ -11,4 +11,10 @@ class Survey extends Model
 
     protected $table="surveys";
     protected $guarded = [];
+
+    public function surveyQuestions()
+    {
+        return $this->hasMany(SurveyQuestion::class, 'survey_id');
+    }
+
 }

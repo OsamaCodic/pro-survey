@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\SurveyQuestion;
+use App\Models\Survey;
 use Session;
 
 class SurveyQuestionController extends Controller
@@ -16,7 +17,8 @@ class SurveyQuestionController extends Controller
      */
     public function index()
     {
-        return "hi";
+        $survey = Survey::where('id', $_GET['survey_id'])->first();   
+        return view('admin.questions.index', compact('survey'));
     }
 
     /**
@@ -26,6 +28,7 @@ class SurveyQuestionController extends Controller
      */
     public function create()
     {
+        $survey = Survey::where('id', $_GET['survey_id'])->first();
         $form_action= url('admin/survey_questions');
         $form_method="POST";
         $form_btn = 'Add';
@@ -33,6 +36,7 @@ class SurveyQuestionController extends Controller
         $form_btn_class = 'btn-success';
 
         return view('admin.questions.create',compact(
+            'survey',
             'form_action',
             'form_method',
             'form_btn',
@@ -52,7 +56,7 @@ class SurveyQuestionController extends Controller
         SurveyQuestion::create($request->except('_token'));
         Session::flash('success', 'Question added successfully!');
         return response([
-            'redirect_url' => url('admin/survey')
+            'redirect_url' => url('admin/survey_questions?survey_id='.$request->survey_id)
         ],200);
     }
 
@@ -75,7 +79,18 @@ class SurveyQuestionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $survey_question = SurveyQuestion::find($id);
+        
+        if ($survey_question)
+        {
+            $form_action=url('admin/survey_questions/'.$id);
+            $form_method="PUT";
+            $form_btn = 'Update';
+            $form_btn_icon = 'fa fa-repeat';
+            $form_btn_class = 'btn-warning';
+        }
+
+        return view('admin.questions.create', compact('survey_question', 'form_action', 'form_method','form_btn', 'form_btn_class', 'form_btn_icon'));
     }
 
     /**

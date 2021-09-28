@@ -1,6 +1,13 @@
 <style>
     /* This CSS will apply on whole project */
 
+    .zoom {
+		transition: transform .2s;
+	}
+	.zoom:hover {
+		transform: scale(1.5);
+	}
+
     .required:after{ 
         content:'*'; 
         color:red; 

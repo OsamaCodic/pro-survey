@@ -1,12 +1,26 @@
 <script>
     
-    // $.ajaxSetup({
-    //     headers: {
-    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //     }
-    // });
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 
-    $('#question_type').on('change', function(){    
+    $(document).ready(function() {
+        // Textarea will show base on SELECT
+        var question_type = $('#question_type').val();   
+        if(question_type == "TextArea")
+        { 
+            $("#textarea_hidden").slideDown()
+        }
+        else
+        {
+            $("#textarea_hidden").slideUp()
+        }
+    });
+
+    $('#question_type').on('change', function(){
+        // Textarea will show base on Dropdown Change
         if(this.value == "TextArea")
         { 
             $("#textarea_hidden").slideDown()

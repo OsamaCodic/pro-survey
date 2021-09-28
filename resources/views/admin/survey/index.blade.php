@@ -4,15 +4,6 @@
     Survey
 @endsection
 
-<style>
-    .zoom {
-		transition: transform .2s;
-	}
-	.zoom:hover {
-		transform: scale(1.5);
-	}
-</style>
-
 @section('content')   
     <div class="container-fluid">
         <div class="row">

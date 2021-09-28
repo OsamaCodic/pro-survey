@@ -9,9 +9,9 @@
             <div class="col-sm-10">
                 <select id="question_type" name="question_type" class="form-control">
                     <option value="">--Select--</option>
-                    <option value="TextArea">TextArea</option>                        
-                    <option value="Checkbox">Checkbox</option>
-                    <option value="RadioButtons">RadioButtons</option>                        
+                    <option value="TextArea" {{ (@$survey_question->question_type) == 'TextArea' ? 'selected' : '' }} >TextArea</option>                        
+                    <option value="Checkbox" {{ (@$survey_question->question_type) == 'Checkbox' ? 'selected' : '' }}>Checkbox</option>
+                    <option value="RadioButtons" {{ (@$survey_question->question_type) == 'RadioButtons' ? 'selected' : '' }}>RadioButtons</option>                        
                 </select>
             </div>
         </div>
@@ -19,7 +19,7 @@
         <div id="textarea_hidden" class="form-group row" style="display: none">
             <label for="title" class="col-sm-2 col-form-label">TextArea</label>
             <div class="col-sm-10">
-                <textarea class="form-control" id="title" name="title" placeholder="Enter text area.." rows="4" cols="50"></textarea>
+                <textarea class="form-control" id="title" name="title" placeholder="Enter text area.." rows="4" cols="50">{{@$survey_question->title}}</textarea>
             </div>
         </div>
 
