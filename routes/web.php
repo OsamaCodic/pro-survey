@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'admin'], function ()
     {
         Route::resource('/survey',SurveyController::class);
+        Route::POST('/survey/delete_selected_rows', [App\Http\Controllers\admin\SurveyController ::class, 'delete_selected_rows']);
         Route::resource('/survey_questions',SurveyQuestionController::class);    
     });
 

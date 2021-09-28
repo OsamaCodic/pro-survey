@@ -115,6 +115,13 @@ class SurveyController extends Controller
     public function destroy($id)
     {
         Survey::find($id)->delete();
-        Session::flash('toast_success', 'Survey deleted successfully!');
+    }
+
+    public function delete_selected_rows(Request $request)
+    {
+        foreach ($request->delete_rows_arr as $del_row_id)
+        {
+            Survey::find($del_row_id)->delete();
+        }
     }
 }
