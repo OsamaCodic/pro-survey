@@ -68,15 +68,20 @@
                     })
                     .done(function(response) {
                         swal({
-                            title: 'Survey deleted!',
-                            text: '',
-                            timer: 2000,
-                            showCancelButton: false,
+                            title: "Survey deleted!",
+                            text: "Record deleted permanently",
+                            icon: "success",
+                            timer: 5000,
+                            buttons: false,
+                            dangerMode: true,
                         })
                         setTimeout(function(){
                             location.reload();
-                        }, 100); 
+                        }, 1000);
                     })
+                }
+                else {
+                    swal("Cancelled", "Your survey is safe :)", "error");
                 }
             });        
         }
@@ -132,15 +137,20 @@
                     })
                     .done(function(response) {
                         swal({
-                            title: 'Selected survey deleted!',
-                            text: '',
-                            timer: 2000,
-                            showCancelButton: false,
+                            title: "Selected surveys deleted!",
+                            text: "Records deleted permanently",
+                            icon: "success",
+                            timer: 5000,
+                            buttons: false,
+                            dangerMode: true,
                         })
                         setTimeout(function(){
                             location.reload();
-                        }, 100); 
+                        }, 1000);
                     })
+                }
+                else {
+                    swal("Cancelled", "Your surveys is safe :)", "error");
                 }
             });
         });

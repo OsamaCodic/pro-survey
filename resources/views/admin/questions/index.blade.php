@@ -10,6 +10,7 @@
             <div class="col-12">
 
                 <a href="{{url('admin/survey_questions/create?survey_id='.$survey->id)}}" type="button" class="btn btn-info btn-sm">Add more question <i class="fa fa-plus fa-xs" aria-hidden="true"></i></a>
+                <a href="{{url('admin/survey')}}" type="button" class="btn btn-default btn-sm">Back to Surveys list <i class="fa fa-arrow-left fa-xs" aria-hidden="true"></i></a>
                 
                 <div class="card card-info mt-3">
                     <div class="card-header">
@@ -37,15 +38,15 @@
                                             <td>{{$surveyQuestion->display_order}}</td>
                                             <td>
                                                 <a href="{{ url('admin/survey_questions/'.$surveyQuestion->id.'/edit?survey_id='.$survey->id) }}"><i style="color: #e7b00a" class="zoom fa fa-pencil pull-right fa-xs" aria-hidden="true"></i></a>
-                                                {{-- <a href="#" onclick="delete_survey({{$survey}})" class="delete" type="button" class="pull-right btn btn-xs btn-danger"><i style="color: #dc3545" class="zoom fa fa-trash pull-right fa-xs" aria-hidden="true"></i></a>  --}}
+                                                <a href="#" onclick="delete_question({{$surveyQuestion}})" class="delete" type="button" class="pull-right btn btn-xs btn-danger"><i style="color: #dc3545" class="zoom fa fa-trash pull-right fa-xs" aria-hidden="true"></i></a> 
                                             </td>
                                         </tr>
                                     @endforeach
                             </tbody>
                         </table>
-                        {{-- @if ($surveys->count()==0)
-                            <p class="text-center text-danger mt-3">No survey has been found!</p>
-                        @endif --}}
+                        @if ($survey->surveyQuestions->count()==0)
+                            <p class="text-center text-danger mt-3"><b>{{$survey->title}}</b> survey has no questions!</p>
+                        @endif
                     </div>
                     <!-- /card-body -->
                 </div>
@@ -56,5 +57,5 @@
 @endsection
 
 @section('javascript')
-    @include('admin.survey.partials.js')
+    @include('admin.questions.partials.js')
 @endsection

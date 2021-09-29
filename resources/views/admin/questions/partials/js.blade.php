@@ -1,5 +1,5 @@
 <script>
-    
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -66,42 +66,64 @@
                 url : $('#questionsForm').attr('action'),
                 type: $('#questionsForm').attr('method'),
                 data: $('#questionsForm').serialize(),
-                success: function(response){
-                    location.href = response.redirect_url;
+                success: function(response){    
+                    swal({
+                        text: response.status,
+                        timer: 5000,
+                        icon:"success",
+                        showConfirmButton: false,
+                        type: "error"
+                    })
+                    setTimeout(function(){
+                        location.href = response.redirect_url;
+                    }, 1000); 
                 }          
             });
         }
     });
 
     // Survey Delete	
-    // function delete_survey(obj)
-    // { 
-    //     var url = "{{ url('admin/survey') }}";
-    //     var dltUrl = url+"/"+obj.id;
+        function delete_question(obj)
+        {
+            var url = "{{ url('admin/survey_questions') }}";
+            var dltUrl = url+"/"+obj.id;
 
-    //     swal({
-    //             title: "Are you sure you want to delete " + obj.title +"?",
-    //             text: "If you delete this, it will be delete permanently!",
-    //             icon: "warning",
-    //             buttons: true,
-    //             dangerMode: true,
-    //         })
-    //         .then((willDelete) => {
-    //         if (willDelete) {
-    //             $.ajax({
-    //                 url: dltUrl,
-    //                 type: "DELETE",
-    //                 data:{
-    //                     _token:'{{ csrf_token() }}',
-    //                     id:'id'
-    //                 }           
-    //             })
-    //             .done(function(response) {
-    //                 location.reload();
-    //             })
-    //         }
-    //     });        
-    // }
+            swal({
+                    title: "Do you want to delete this Question?",
+                    text: obj.title,
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        url: dltUrl,
+                        type: "DELETE",
+                        data:{
+                            _token:'{{ csrf_token() }}',
+                            id:'id'
+                        }           
+                    })
+                    .done(function(response) {
+                        swal({
+                            title: "Question deleted!",
+                            text: "Record deleted permanently",
+                            icon: "success",
+                            timer: 5000,
+                            buttons: false,
+                            dangerMode: true,
+                        })
+                        setTimeout(function(){
+                            location.reload();
+                        }, 1000);
+                    })
+                }
+                else {
+                    swal("Cancelled", "Your Question is safe :)", "error");
+                }
+            });        
+        }
     // Survey Delete
 
 </script>

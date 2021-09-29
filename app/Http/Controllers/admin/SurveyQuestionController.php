@@ -54,9 +54,9 @@ class SurveyQuestionController extends Controller
     public function store(Request $request)
     {
         SurveyQuestion::create($request->except('_token'));
-        Session::flash('success', 'Question added successfully!');
         return response([
-            'redirect_url' => url('admin/survey_questions?survey_id='.$request->survey_id)
+            'redirect_url' => url('admin/survey_questions?survey_id='.$request->survey_id),
+            'status' => 'Question added successfully!'
         ],200);
     }
 
@@ -80,7 +80,7 @@ class SurveyQuestionController extends Controller
     public function edit($id)
     {
         $survey_question = SurveyQuestion::find($id);
-        
+
         if ($survey_question)
         {
             $form_action=url('admin/survey_questions/'.$id);
@@ -102,7 +102,13 @@ class SurveyQuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $survey_question = SurveyQuestion::find($id);
+        $survey_question->update();
+        return response([
+            'redirect_url' => url('admin/survey_questions?survey_id='.$request->survey_id),
+            'status' => 'Question updated successfully!'
+        ],200);
+
     }
 
     /**
@@ -113,6 +119,6 @@ class SurveyQuestionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $survey_question = SurveyQuestion::find($id)->delete();
     }
 }

@@ -26,13 +26,18 @@
         <div class="form-group row">
             <label for="display_order" class="col-sm-2 required col-form-label">Display order</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="display_order" name="display_order" value="" placeholder="Enter display order..">
+                <input type="text" class="form-control" id="display_order" name="display_order" value="{{@$survey_question->display_order}}" placeholder="Enter display order..">
             </div>
         </div>
     </div>
 
     <div class="card-footer">
         <button type="submit" class="btn {{$form_btn_class}} btn-sm">{{$form_btn}} <i class="fa {{$form_btn_icon}} fa-xs" aria-hidden="true"></i></button>
-        {{-- <a href="{{ url('admin/survey') }}" type="submit" class="btn btn-default btn-sm ml-2">Back <i class="fa fa-arrow-left fa-xs" aria-hidden="true"></i></a> --}}
+
+        @if (@$survey_question)
+            <a href="{{url('admin/survey_questions?survey_id='.$survey_question->getSurvey->id)}}" type="button" class="btn btn-default btn-sm">Back to Questions <i class="fa fa-arrow-left fa-xs" aria-hidden="true"></i></a>
+        @else
+            <a href="{{url('admin/survey_questions?survey_id='.$survey->id)}}" type="button" class="btn btn-default btn-sm">Back to Questions <i class="fa fa-arrow-left fa-xs" aria-hidden="true"></i></a>
+        @endif
     </div>
 </form>
