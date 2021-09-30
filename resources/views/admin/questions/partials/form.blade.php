@@ -16,6 +16,56 @@
             </div>
         </div>
 
+        <div id="question_length_section" class="form-group row mt-4" style="display: none">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-10">
+                <div class="row">
+                    <div class="col-md-4 zoom">
+                        <label for="short_length" style="cursor: pointer">Short Length 75
+                            <label class="switch">
+                                <input class="toggle-class" 
+                                type="radio" 
+                                id="short_length" 
+                                class="question_length"
+                                name="question_length"
+                                value="75"
+                                >
+                                <span class="slider round"></span>
+                            </label>
+                        </label>
+                    </div>
+                    <div class="col-md-4 zoom">
+                        <label for="medium_length" style="cursor: pointer">Medium Length 180
+                            <label class="switch">
+                                <input class="toggle-class" 
+                                type="radio" 
+                                id="medium_length"
+                                class="question_length"
+                                name="question_length"
+                                value="180"
+                                >
+                                <span class="slider round"></span>
+                            </label>
+                        </label>
+                    </div>
+                    <div class="col-md-4 zoom">
+                        <label for="long_length" style="cursor: pointer">Long Length 300
+                            <label class="switch">
+                                <input class="toggle-class" 
+                                type="radio" 
+                                id="long_length" 
+                                class="question_length"
+                                name="question_length"
+                                value="300"
+                                >
+                                <span class="slider round"></span>
+                            </label>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="textarea_hidden" class="form-group row" style="display: none">
             <label for="title" class="col-sm-2 col-form-label">TextArea</label>
             <div class="col-sm-10">

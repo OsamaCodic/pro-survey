@@ -7,28 +7,50 @@
     });
 
     $(document).ready(function() {
-        // Textarea will show base on SELECT
+        // Radio toggles will show base on SELECT
         var question_type = $('#question_type').val();   
         if(question_type == "TextArea")
         { 
-            $("#textarea_hidden").slideDown()
+            $("#question_length_section").fadeIn('slow')
+            
         }
         else
         {
-            $("#textarea_hidden").slideUp()
+            $("#question_length_section").fadeOut('slow')
         }
     });
 
     $('#question_type').on('change', function(){
-        // Textarea will show base on Dropdown Change
+        // Radio toggles will show base on Dropdown Change
         if(this.value == "TextArea")
         { 
-            $("#textarea_hidden").slideDown()
+            $("#question_length_section").fadeIn('slow')
         }
         else
         {
-            $("#textarea_hidden").slideUp()
+            $("#question_length_section").fadeOut('slow')
         }
+    });
+
+    $('#short_length').click(function()
+    {
+        $("#textarea_hidden").slideDown()
+        var len = $('#short_length').val();
+        alert(len);
+    });
+    
+    $('#medium_length').click(function()
+    {
+        $("#textarea_hidden").slideDown()
+        var len = $('#medium_length').val();
+        alert(len);
+    });
+
+    $('#long_length').click(function() 
+    {
+        $("#textarea_hidden").slideDown()
+        var len = $('#long_length').val();
+        alert(len);
     });
 
     // Survey Create/Update

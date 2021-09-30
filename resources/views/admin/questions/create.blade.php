@@ -4,7 +4,8 @@
     Add Question
 @endsection
 
-@section('content')   
+@section('content')
+    @include('admin.questions.partials.css')
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
