@@ -152,7 +152,7 @@
                             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                                
                                 <li class="nav-item">
-                                    <a href="{{url('/home')}}" class="nav-link">
+                                    <a href="{{url('/home')}}" class="nav-link {{ Request::path() == 'home' ? 'active': '' }}">
                                         <i class="fa fa-home" aria-hidden="true"></i> 
                                       <p>
                                         Dashboard
@@ -161,7 +161,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="{{url('admin/survey')}}" class="nav-link">
+                                    <a href="{{url('admin/survey')}}" class="nav-link {{ Request::path() == 'admin/survey' ? 'active': '' }}">
                                         <i class="fa fa-address-book" aria-hidden="true"></i> 
                                       <p>
                                         Surveys
@@ -170,7 +170,7 @@
                                 </li>
                                 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="#" class="nav-link {{ Request::path() == '#' ? 'active': '' }}">
                                         <i class="fa fa-cog" aria-hidden="true"></i>
                                       <p>
                                         Site Settings

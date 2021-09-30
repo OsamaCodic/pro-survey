@@ -10,8 +10,8 @@
                 <select id="question_type" name="question_type" class="form-control">
                     <option value="">--Select--</option>
                     <option value="TextArea" {{ (@$survey_question->question_type) == 'TextArea' ? 'selected' : '' }} >TextArea</option>                        
-                    <option value="Checkbox" {{ (@$survey_question->question_type) == 'Checkbox' ? 'selected' : '' }}>Checkbox</option>
-                    <option value="RadioButtons" {{ (@$survey_question->question_type) == 'RadioButtons' ? 'selected' : '' }}>RadioButtons</option>                        
+                    <option value="Checkbox" disabled {{ (@$survey_question->question_type) == 'Checkbox' ? 'selected' : '' }}>Checkbox</option>
+                    <option value="RadioButtons" disabled {{ (@$survey_question->question_type) == 'RadioButtons' ? 'selected' : '' }}>RadioButtons</option>                        
                 </select>
             </div>
         </div>

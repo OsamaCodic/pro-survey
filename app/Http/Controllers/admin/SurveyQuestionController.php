@@ -103,7 +103,7 @@ class SurveyQuestionController extends Controller
     public function update(Request $request, $id)
     {
         $survey_question = SurveyQuestion::find($id);
-        $survey_question->update();
+        $survey_question->update($request->except('_token'));
         return response([
             'redirect_url' => url('admin/survey_questions?survey_id='.$request->survey_id),
             'status' => 'Question updated successfully!'
@@ -120,5 +120,12 @@ class SurveyQuestionController extends Controller
     public function destroy($id)
     {
         $survey_question = SurveyQuestion::find($id)->delete();
+    }
+
+    public function question_answers(Request $request)
+    {
+        // All answers        
+        dd($request->answer_arr);
+        
     }
 }

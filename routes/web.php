@@ -34,7 +34,9 @@ Route::group(['middleware' => 'auth'], function () {
     {
         Route::resource('/survey',SurveyController::class);
         Route::POST('/survey/delete_selected_rows', [App\Http\Controllers\admin\SurveyController ::class, 'delete_selected_rows']);
-        Route::resource('/survey_questions',SurveyQuestionController::class);    
+        Route::GET('/survey_trail/{survey_id}', [App\Http\Controllers\admin\SurveyController ::class, 'survey_trail']);
+        Route::resource('/survey_questions',SurveyQuestionController::class); 
+        Route::post('/question_answers', [App\Http\Controllers\admin\SurveyQuestionController ::class, 'question_answers']);
     });
 
 });

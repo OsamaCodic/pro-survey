@@ -116,12 +116,18 @@ class SurveyController extends Controller
     {
         Survey::find($id)->delete();
     }
-
+    
     public function delete_selected_rows(Request $request)
     {
         foreach ($request->delete_rows_arr as $del_row_id)
         {
             Survey::find($del_row_id)->delete();
         }
+    }
+
+    public function survey_trail($survey_id)
+    {
+        $survey = Survey::find($survey_id);
+        return view('admin.survey-feedback.trail', compact('survey'));
     }
 }

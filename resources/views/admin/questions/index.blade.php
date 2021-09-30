@@ -50,6 +50,10 @@
                     </div>
                     <!-- /card-body -->
                 </div>
+                
+                @if ($survey->surveyQuestions->count() > 0)
+                    <a href="{{url('admin/survey_trail/'.$survey->id)}}" type="button" class="btn btn-success btn-sm">Test Survey <i class="fa fa-eye" aria-hidden="true"></i></a>
+                @endif
             </div>
         </div>
     </div>
