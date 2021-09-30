@@ -8,21 +8,10 @@
     $(document).ready(function() {
         $("#answerForm").submit(function(e) {
             e.preventDefault();
-            var answer_arr = [];
-            var inps = document.getElementsByName('answer[]');
-    
-            for (var i = 0; i <inps.length; i++)
-            {
-                var inp=inps[i];
-                answer_arr.push(inp.value);
-            }
-
             $.ajax({
                 type : "post",
                 url :  "{{ url('admin/question_answers') }}",
-                data : {
-                    answer_arr: answer_arr
-                },
+                data: $("#answerForm").serialize(),
                 success : function(response)
                 {                            
                     swal({

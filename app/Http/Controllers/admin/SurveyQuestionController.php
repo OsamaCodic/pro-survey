@@ -124,8 +124,17 @@ class SurveyQuestionController extends Controller
 
     public function question_answers(Request $request)
     {
-        // All answers        
-        dd($request->answer_arr);
-        
+        // Survey Trail Data should not saved in Database
+
+        // foreach ($request->answer as $question_id => $answer)
+        // {
+        //     $survey_question = SurveyQuestion::find($question_id);
+            
+        //     foreach ($answer as $ans)
+        //     {
+        //         $survey_question->answer = $ans;
+        //         $survey_question->save();
+        //     }
+        // }
     }
 }

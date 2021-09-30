@@ -24,7 +24,7 @@
                             <tr>
                                 <th>Question Type</th>
                                 <th>Title</th>
-                                {{-- <th>Description</th> --}}
+                                {{-- <th>Answer</th> --}}
                                 <th>Display Order</th>
                                 <th>Actions</th>
                             </tr>
@@ -34,7 +34,7 @@
                                         <tr>
                                             <td>{{$surveyQuestion->question_type}}</td>
                                             <td>{{$surveyQuestion->title}}</td>
-                                            {{-- <td>{{$surveyQuestion->description}}</td> --}}
+                                            {{-- <td>{{$surveyQuestion->answer}}</td> --}}
                                             <td>{{$surveyQuestion->display_order}}</td>
                                             <td>
                                                 <a href="{{ url('admin/survey_questions/'.$surveyQuestion->id.'/edit?survey_id='.$survey->id) }}"><i style="color: #e7b00a" class="zoom fa fa-pencil pull-right fa-xs" aria-hidden="true"></i></a>
