@@ -92,17 +92,16 @@
         {
             if($('#delete_selected').is(":checked"))
             {
-                
                 $(".delete").fadeOut("fast");
-                $(".form-check-input").fadeIn("slow");
+                setTimeout(function(){ $(".form-check-input").fadeIn("slow"); }, 200);
                 $("#del_rows_btn").fadeIn("slow");
                 $("#checkbox_delete_Label").removeClass("text-secondary");
                 $("#checkbox_delete_Label").addClass("text-danger");
             }  
             else
             {
-                $(".delete").fadeIn("slow");
-                $(".form-check-input").fadeOut("slow");
+                setTimeout(function(){ $(".delete").fadeIn("slow"); }, 200);
+                $(".form-check-input").fadeOut("fast");
                 $("#del_rows_btn").fadeOut("slow");
                 $("#checkbox_delete_Label").removeClass("text-danger");
                 $("#checkbox_delete_Label").addClass("text-secondary");

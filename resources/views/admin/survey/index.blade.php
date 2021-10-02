@@ -37,23 +37,23 @@
                         <table id="surveyTable" class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Description</th>
-                                    <th>Display Order</th>
-                                    <th>Actions</th>
+                                    <th colspan="10%">Name</th>
+                                    <th colspan="30%">Description</th>
+                                    <th colspan="14%">Display Order</th>
+                                    <th colspan="6%">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($surveys as $survey) 
                                     <tr>
-                                        <td>{{$survey->title}}</td>
-                                        <td>{{$survey->description}}</td>
-                                        <td>{{$survey->display_order}}</td>
-                                        <td>
+                                        <td colspan="10%">{{$survey->title}}</td>
+                                        <td colspan="30%">{{$survey->description}}</td>
+                                        <td colspan="14%">{{$survey->display_order}}</td>
+                                        <td colspan="6%">
                                             <a href="{{url('admin/survey_questions?survey_id='.$survey->id)}}" type="button" class="zoom btn btn-info btn-xs" style="font-size: 8px;">Open</a>
                                             <a href="{{ url('admin/survey/'.$survey->id.'/edit') }}"><i style="color: #e7b00a" class="zoom fa fa-pencil pull-right fa-xs" aria-hidden="true"></i></a>
                                             <a href="#" onclick="delete_survey({{$survey}})" class="delete" type="button" class="pull-right btn btn-xs btn-danger"><i style="color: #dc3545" class="zoom fa fa-trash pull-right fa-xs" aria-hidden="true"></i></a>
-                                            <input class="form-check-input zoom" type="checkbox" id="delete_rows" name="delete_rows[]" value="{{$survey->id}}" style="margin-left: 9px; margin-top: 7px; display:none">
+                                            <input class="form-check-input zoom" type="checkbox" id="delete_rows" name="delete_rows[]" value="{{$survey->id}}" style="margin-left: 5px; margin-top: 7px; display:none">
                                         </td>
                                     </tr>
                                 @endforeach
