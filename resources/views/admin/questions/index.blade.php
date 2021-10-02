@@ -19,24 +19,29 @@
 
                     <div class="card-body">
 
-                        <table id="example2" class="table table-hover">
+                        <table id="table_layout" class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Question Type</th>
-                                <th>Title</th>
-                                {{-- <th>Answer</th> --}}
-                                <th>Display Order</th>
-                                <th>Actions</th>
+                                <th colspan="10%">Question Type</th>
+                                <th colspan="60%">Title</th>
+                                <th colspan="10%">Length</th>
+                                <th colspan="10%">Display Order</th>
+                                <th colspan="10%">Actions</th>
                             </tr>
                         </thead>
                             <tbody>
                                     @foreach ($survey->surveyQuestions as $surveyQuestion)
                                         <tr>
-                                            <td>{{$surveyQuestion->question_type}}</td>
-                                            <td>{{$surveyQuestion->title}}</td>
-                                            {{-- <td>{{$surveyQuestion->answer}}</td> --}}
-                                            <td>{{$surveyQuestion->display_order}}</td>
-                                            <td>
+                                            <td colspan="10%">{{$surveyQuestion->question_type}}</td>
+                                            <td colspan="60%">{{$surveyQuestion->title}}</td>
+                                            <td colspan="10%">
+                                                @if ($surveyQuestion->question_length == '75') <strong class="text-secondary">Short</strong>
+                                                @elseif($surveyQuestion->question_length == '165') <strong class="text-secondary">Medium</strong>
+                                                @else <strong class="text-secondary">Long</strong>
+                                                @endif
+                                            </td>
+                                            <td colspan="10%">{{$surveyQuestion->display_order}}</td>
+                                            <td colspan="10%">
                                                 <a href="{{ url('admin/survey_questions/'.$surveyQuestion->id.'/edit?survey_id='.$survey->id) }}"><i style="color: #e7b00a" class="zoom fa fa-pencil pull-right fa-xs" aria-hidden="true"></i></a>
                                                 <a href="#" onclick="delete_question({{$surveyQuestion}})" class="delete" type="button" class="pull-right btn btn-xs btn-danger"><i style="color: #dc3545" class="zoom fa fa-trash pull-right fa-xs" aria-hidden="true"></i></a> 
                                             </td>

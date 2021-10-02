@@ -17,7 +17,7 @@ class SurveyQuestionController extends Controller
      */
     public function index()
     {
-        $survey = Survey::where('id', $_GET['survey_id'])->first();   
+        $survey = Survey::where('id', $_GET['survey_id'])->first();
         return view('admin.questions.index', compact('survey'));
     }
 

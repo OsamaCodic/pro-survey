@@ -17,47 +17,29 @@
         </div>
 
         <div id="question_length_section" class="form-group row mt-4" style="display: none">
-            <div class="col-sm-2"></div>
+            <div class="col-sm-2">{{-- Lable column --}}</div>
             <div class="col-sm-10">
                 <div class="row">
                     <div class="col-md-4 zoom">
                         <label for="short_length" style="cursor: pointer">Short Length 75
                             <label class="switch">
-                                <input class="toggle-class" 
-                                type="radio" 
-                                id="short_length" 
-                                class="question_length"
-                                name="question_length"
-                                value="75"
-                                >
+                                <input class="toggle-class" type="radio" id="short_length" class="question_length" name="question_length" value="75" {{ (@$survey_question->question_length) == '75' ? 'checked' : '' }}>
                                 <span class="slider round"></span>
                             </label>
                         </label>
                     </div>
                     <div class="col-md-4 zoom">
-                        <label for="medium_length" style="cursor: pointer">Medium Length 180
+                        <label for="medium_length" style="cursor: pointer">Medium Length 165
                             <label class="switch">
-                                <input class="toggle-class" 
-                                type="radio" 
-                                id="medium_length"
-                                class="question_length"
-                                name="question_length"
-                                value="180"
-                                >
+                                <input class="toggle-class" type="radio" id="medium_length" class="question_length" name="question_length" value="165" {{ (@$survey_question->question_length) == '165' ? 'checked' : '' }}>>
                                 <span class="slider round"></span>
                             </label>
                         </label>
                     </div>
                     <div class="col-md-4 zoom">
-                        <label for="long_length" style="cursor: pointer">Long Length 300
+                        <label for="long_length" style="cursor: pointer">Long Length 385
                             <label class="switch">
-                                <input class="toggle-class" 
-                                type="radio" 
-                                id="long_length" 
-                                class="question_length"
-                                name="question_length"
-                                value="300"
-                                >
+                                <input class="toggle-class" type="radio" id="long_length" class="question_length" name="question_length" value="385" {{ (@$survey_question->question_length) == '385' ? 'checked' : '' }}>
                                 <span class="slider round"></span>
                             </label>
                         </label>
@@ -67,9 +49,10 @@
         </div>
 
         <div id="textarea_hidden" class="form-group row" style="display: none">
+            <input type="hidden" id="selected_length" value="{{@$survey_question->question_length}}">
             <label for="title" class="col-sm-2 col-form-label">TextArea</label>
             <div class="col-sm-10">
-                <textarea class="form-control" id="title" name="title" placeholder="Enter text area.." rows="4" cols="50">{{@$survey_question->title}}</textarea>
+                <textarea class="form-control" id="title" name="title" placeholder="Enter text area.." rows="" cols="200">{{@$survey_question->title}}</textarea>
             </div>
         </div>
 

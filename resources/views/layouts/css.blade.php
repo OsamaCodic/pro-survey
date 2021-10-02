@@ -1,3 +1,6 @@
+
+<style> /* This CSS will apply on whole project */ </style>
+
 {{-- Toggle Button --}}
     <style>
         
@@ -71,7 +74,13 @@
 {{-- /Toggle Button --}}
 
 <style>
-    /* This CSS will apply on whole project */
+    /* this table css prevent text overflow in columns */
+    .table 
+	{
+		table-layout:fixed;
+		width:100%;
+		overflow-wrap: break-word;
+	}
 
     .zoom {
 		transition: transform .2s;
